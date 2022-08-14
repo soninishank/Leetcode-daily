@@ -9,25 +9,26 @@
  */
 
 class Solution {
+    
 
-    TreeNode current = null;
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
         if (original == null && cloned == null) {
             return null;
         }
-       findCloneTreeReference(cloned, target);
-        return current;
+        return findCloneTreeReference(cloned, target);
     }
 
-    void findCloneTreeReference(final TreeNode cloned, final TreeNode target) {
+    private TreeNode findCloneTreeReference(final TreeNode cloned, final TreeNode target) {
         if (cloned == null) {
-            return ;
+            return null;
         }
         if (cloned.val == target.val) {
-            current = cloned;
-            return;
+            return cloned;
         }
-        findCloneTreeReference(cloned.left, target);
-        findCloneTreeReference(cloned.right, target);
+        TreeNode left = findCloneTreeReference(cloned.left, target);
+        if(left != null){
+            return left;
+        }
+        return findCloneTreeReference(cloned.right, target);
     }
 }
