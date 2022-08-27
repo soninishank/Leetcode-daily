@@ -15,18 +15,18 @@
  */
 class Solution {
 
-    private List<Integer> list = new ArrayList<>();
+    private List<TreeNode> list = new ArrayList<>();
     public TreeNode balanceBST(TreeNode root) {
         inOrder(root);
         return buildTree(list, 0, list.size() - 1);
     }
 
-    private TreeNode buildTree(List<Integer> list, int start, int end) {
+    private TreeNode buildTree(List<TreeNode> list, int start, int end) {
         if (start > end) {
             return null;
         }
         int mid = (start + end) / 2;
-        TreeNode node = new TreeNode(list.get(mid));
+        TreeNode node = list.get(mid);
         node.left = buildTree(list, start, mid - 1);
         node.right = buildTree(list, mid + 1, end);
         return node;
@@ -37,7 +37,7 @@ class Solution {
             return;
         }
         inOrder(root.left);
-        list.add(root.val);
+        list.add(root);
         inOrder(root.right);
     }
 }
