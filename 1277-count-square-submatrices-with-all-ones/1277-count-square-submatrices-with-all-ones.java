@@ -13,6 +13,7 @@ class Solution {
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[i].length; j++) {
                 if (matrix[i][j] == 1) {
+                    // Take value from side row , diagonal and above row
                     if (dp[i][j - 1] >= 1 && dp[i - 1][j] >= 1 && dp[i - 1][j - 1] >= 1) {
                         int minValue = 1 + Math.min(dp[i][j - 1], Math.min(dp[i - 1][j], dp[i - 1][j - 1]));
                         dp[i][j] = minValue;
