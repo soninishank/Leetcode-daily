@@ -26,7 +26,7 @@ class Solution {
             return null;
         }
         int mid = (start + end) / 2;
-        TreeNode node = list.get(mid);
+        TreeNode node = list.get(mid); // store treenode instead of value
         node.left = buildTree(list, start, mid - 1);
         node.right = buildTree(list, mid + 1, end);
         return node;
@@ -37,7 +37,7 @@ class Solution {
             return;
         }
         inOrder(root.left);
-        list.add(root);
+        list.add(root);// store treenode instead of value
         inOrder(root.right);
     }
 }
