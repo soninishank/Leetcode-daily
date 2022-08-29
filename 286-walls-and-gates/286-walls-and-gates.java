@@ -9,18 +9,20 @@ class Solution {
                 }
             }
         }
+        
         int[][] directions = {{0,1},{0,-1},{-1,0},{1,0}};
+        HashSet<int[]> visited = new HashSet<>();
         while(!queue.isEmpty())
         {
             int[] pollValue = queue.poll();
+            visited.add(pollValue);
             for(int[] dir : directions)
             {
                 int x = pollValue[0] + dir[0];
                 int y = pollValue[1] + dir[1];
-                if(x >= 0 && y >= 0 && x <= rooms.length - 1 && y <= rooms[0].length-1 && rooms[x][y] == 2147483647)
+                if(x >= 0 && y >= 0 && x <= rooms.length - 1 && y <= rooms[0].length-1 && rooms[x][y] == 2147483647 && !visited.contains(new int[]{x,y}))
                 {
-                   int value = rooms[pollValue[0]][pollValue[1]] + 1;
-                    rooms[x][y] = Math.min(value, rooms[x][y]);
+                   rooms[x][y] = rooms[pollValue[0]][pollValue[1]] + 1;
                    queue.add(new int[]{x,y});
                 }
             }
