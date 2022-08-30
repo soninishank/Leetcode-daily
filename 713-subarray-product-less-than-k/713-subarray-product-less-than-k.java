@@ -1,4 +1,6 @@
 class Solution {
+    // less than k 
+    // sliding window
     public int numSubarrayProductLessThanK(int[] nums, int k) {
         if(k <= 1)
         {
