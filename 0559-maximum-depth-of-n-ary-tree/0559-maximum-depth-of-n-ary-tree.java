@@ -18,14 +18,14 @@ class Node {
 */
 
 class Solution {
+
     public int maxDepth(Node root) {
-        if(root == null){
+        if (root == null) {
             return 0;
         }
         int sum = 0;
-        for(Node child : root.children)
-        {
-            sum = Math.max(sum,maxDepth(child));
+        for (Node child : root.children) {
+            sum = Math.max(sum, maxDepth(child));
         }
         return 1 + sum;
     }
