@@ -1,10 +1,10 @@
 class Solution {
 
     public int lengthOfLongestSubstring(String s) {
-        int end = 0, start = 0, length = s.length();
-        int result = 0;
         int[] arr = new int[256];
-        while (end < length) {
+        int end = 0, start = 0;
+        int result = Integer.MIN_VALUE;
+        while (end < s.length()) {
             char c1 = s.charAt(end);
             arr[c1]++;
             end++;
@@ -13,7 +13,12 @@ class Solution {
                 arr[c2]--;
                 start++;
             }
-            result = Math.max(result, end - start);
+            if (end - start > result) {
+                result = end - start;
+            }
+        }
+        if (result == Integer.MIN_VALUE) {
+            return 0;
         }
         return result;
     }
