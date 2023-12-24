@@ -7,6 +7,7 @@ class Solution {
             list.add(intervals[i]);
             i++;
         }
+        // used for second question
         while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
             newInterval[0] = Math.min(intervals[i][0], newInterval[0]);
             newInterval[1] = Math.max(intervals[i][1], newInterval[1]);
