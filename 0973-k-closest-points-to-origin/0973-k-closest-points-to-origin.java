@@ -1,7 +1,7 @@
 class Solution {
 
     public int[][] kClosest(int[][] points, int k) {
-        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> findEuclideanDistance(b) - findEuclideanDistance(a));
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> getEuclideanDistance(b) - getEuclideanDistance(a));
         for (int point[] : points) {
             pq.add(point);
             if (pq.size() > k) {
@@ -17,9 +17,9 @@ class Solution {
         return arr;
     }
 
-    public int findEuclideanDistance(int[] arr) {
-        int x1 = arr[0] - 0;
-        int x2 = arr[1] - 0;
-        return x1 * x1 + x2 * x2;
+    private int getEuclideanDistance(int[] point) {
+        int first = point[0] - 0;
+        int second = point[1] - 0;
+        return first * first + second * second;
     }
 }
