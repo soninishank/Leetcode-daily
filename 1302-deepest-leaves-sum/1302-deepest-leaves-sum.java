@@ -14,21 +14,20 @@
  * }
  */
 class Solution {
-    Queue<TreeNode> queue = new LinkedList<>();
-    List<List<Integer>> resultList = new ArrayList<>();
-    int sum = 0;
 
     public int deepestLeavesSum(TreeNode root) {
         if (root == null) {
             return 0;
         }
+        int result = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        while (!queue.isEmpty()) {
+        while (queue.size() > 0) {
             int size = queue.size();
-            List<Integer> list = new ArrayList<>();
+            int sum = 0;
             for (int i = 0; i < size; i++) {
                 TreeNode poll = queue.poll();
-                list.add(poll.val);
+                sum += poll.val;
                 if (poll.left != null) {
                     queue.add(poll.left);
                 }
@@ -36,14 +35,8 @@ class Solution {
                     queue.add(poll.right);
                 }
             }
-            resultList.add(new ArrayList<>(list));
+            result = sum;
         }
-        if(resultList.size() > 0){
-            List<Integer> list = resultList.get(resultList.size()-1);
-            for(int i = 0 ; i < list.size(); i++){
-                sum += list.get(i);
-            }
-        }
-        return sum;
+        return result;
     }
 }
