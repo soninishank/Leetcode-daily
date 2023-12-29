@@ -29,8 +29,11 @@ class Solution {
             return;
         }
         maxDepth = Math.max(maxDepth, count);
-
-        calculateMaxDepth(root.left, count + 1);
-        calculateMaxDepth(root.right, count + 1);
+        if (root.left != null) {
+            calculateMaxDepth(root.left, count + 1);
+        }
+        if (root.right != null) {
+            calculateMaxDepth(root.right, count + 1);
+        }
     }
 }
