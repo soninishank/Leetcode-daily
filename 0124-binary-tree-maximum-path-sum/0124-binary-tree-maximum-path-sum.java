@@ -13,6 +13,7 @@
  *     }
  * }
  */
+// https://www.youtube.com/watch?v=Op6YFcs8R9M - very easy solution
 class Solution {
     
     int maxSum = Integer.MIN_VALUE;
