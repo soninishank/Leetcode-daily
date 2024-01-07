@@ -16,29 +16,30 @@
 class BSTIterator {
 
     private List<Integer> list;
-    int index = 0;
+    int index ;
     public BSTIterator(TreeNode root) {
-        list = new ArrayList<>();
-        buildTree(root);
+        this.list = new ArrayList<>();
+        this.index = 0;
+        this._buildTree(root);
     }
     
-    private void buildTree(TreeNode root){
+    private void _buildTree(TreeNode root){
         if(root == null){
             return;
         }
-        buildTree(root.left);
+        this._buildTree(root.left);
         list.add(root.val);
-        buildTree(root.right);
+        this._buildTree(root.right);
     }
     
     public int next() {
-        int value = list.get(index);
-        index++;
+        int value = this.list.get(index);
+        this.index++;
         return value;
     }
     
     public boolean hasNext() {
-        return index < list.size();
+        return this.index < this.list.size();
     }
 }
 
