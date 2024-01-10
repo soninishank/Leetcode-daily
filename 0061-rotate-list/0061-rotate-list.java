@@ -8,6 +8,13 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+// It is very easy 
+// 1. count the length - https://leetcode.com/problems/rotate-array
+// 2. find modulo
+// 3. its not about reverse , its about connecting 
+// 4. firstPart -> length -k 
+// 5. secondPart -> k to totalLength
+// 6. Join secondPart.next with firstPart start
 class Solution {
 
     public ListNode rotateRight(ListNode head, int k) {
