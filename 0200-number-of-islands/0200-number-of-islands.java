@@ -1,31 +1,32 @@
 class Solution {
-    public int numIslands(char[][] grid) {
-        int[][] dir = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
-        HashSet<String> visited = new HashSet<>();
-        Queue<int[]> queue = new LinkedList<>();
+    int[][] direction = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
+    int row = 0;
+    int col = 0;
+    int count = 0;
 
-        int count = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (visited.contains(i + "-" + j) || grid[i][j] == '0') {
-                    continue;
-                }
-                count++;
-                queue.add(new int[]{i, j});
-                visited.add(i + "-" + j);
-                while (!queue.isEmpty()) {
-                    int[] arr = queue.poll();
-                    for (int[] direction : dir) {
-                        int x = arr[0] + direction[0];
-                        int y = arr[1] + direction[1];
-                        if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] == '1' && !visited.contains(x + "-" + y)) {
-                            queue.add(new int[]{x, y});
-                            visited.add(x + "-" + y);
-                        }
-                    }
+    public int numIslands(char[][] grid) {
+        row = grid.length - 1;
+        col = grid[0].length - 1;
+        for (int i = 0; i <= row; i++) {
+            for (int j = 0; j <= col; j++) {
+                if (grid[i][j] == '1') {
+                    count++;
+                    applyDFS(grid, i, j);
                 }
             }
         }
         return count;
+    }
+
+    private void applyDFS(char[][] grid, int i, int j) {
+        if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1 || grid[i][j] == '0') {
+            return;
+        }
+        grid[i][j] = '0';
+        applyDFS(grid, i + 1, j);
+        applyDFS(grid, i - 1, j);
+        applyDFS(grid, i, j - 1);
+        applyDFS(grid, i, j + 1);
+        return;
     }
 }
