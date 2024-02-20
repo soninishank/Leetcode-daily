@@ -26,7 +26,7 @@ class Solution {
 
         currentHead = head;
         while (currentHead != null) {
-            hashmap.get(currentHead).next = hashmap.get(currentHead.next);
+            hashmap.get(currentHead).next = hashmap.get(currentHead.next); // its all about references 
             hashmap.get(currentHead).random = hashmap.get(currentHead.random);
             currentHead = currentHead.next;
         }
