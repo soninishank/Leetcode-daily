@@ -9,10 +9,12 @@
  * }
  */
 class Solution {
+    // similarly like this 
     public ListNode deleteDuplicates(ListNode head) {
         ListNode temp = head;
         
         while(temp != null){
+            // Just change the pointers
             if(temp.next != null && temp.val == temp.next.val){
                 temp.next = temp.next.next;
             }else{
