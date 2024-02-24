@@ -14,24 +14,28 @@
  * }
  */
 class Solution {
-    int minDepth = Integer.MAX_VALUE;
-
     public int minDepth(TreeNode root) {
+       if (root == null) {
+            return 0;
+        }
+        return minimumValue(root);
+    }
+
+    private int minimumValue(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        calculateMinDepth(root, 1);
-        return minDepth;
-    }
-
-    private void calculateMinDepth(TreeNode root, int count) {
-        if (root == null) {
-            return ;
-        }
         if (root.left == null && root.right == null) {
-            minDepth = Math.min(minDepth, count);
+            return 1;
         }
-        calculateMinDepth(root.left, count + 1);
-        calculateMinDepth(root.right, count + 1);
+        int left = minimumValue(root.left);
+        int right = minimumValue(root.right);
+        if (left == 0) {
+            return 1 + right;
+        } else if (right == 0) {
+            return 1 + left;
+        } else {
+            return 1 + Math.min(left, right);
+        }
     }
 }
