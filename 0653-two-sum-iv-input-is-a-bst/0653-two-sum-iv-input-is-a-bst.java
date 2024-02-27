@@ -15,27 +15,27 @@
  */
 class Solution {
     HashSet<Integer> hashmap = new HashSet<>();
-    boolean flag =false;
 
     public boolean findTarget(TreeNode root, int k) {
         if (root == null) {
             return false;
         }
-        inOrder(root, k);
-        return flag;
+        return inOrder(root, k);
     }
 
-    private void inOrder(TreeNode root, int target) {
+    private boolean inOrder(TreeNode root, int target) {
         if (root == null) {
-            return;
+            return false;
         }
-        inOrder(root.left, target);
+        if(inOrder(root.left, target)){
+            return true;
+        }
         int diff = target - root.val;
         if (hashmap.contains(diff)) {
-            flag = true;
+           return true;
         }
         hashmap.add(root.val);
-        inOrder(root.right, target);
+        return inOrder(root.right, target);
     }
 }
 // HashMap<Integer, Integer> hashmap = new HashMap<>();
