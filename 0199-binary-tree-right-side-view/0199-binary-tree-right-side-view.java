@@ -22,19 +22,18 @@ class Solution {
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
-                TreeNode poll = queue.poll();
-                if (poll.left != null) {
-                    queue.add(poll.left);
-                }
-                if (poll.right != null) {
-                    queue.add(poll.right);
-                }
+                TreeNode node = queue.poll();
                 if (i == size - 1) {
-                    result.add(poll.val);
+                    result.add(node.val);
+                }
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
                 }
             }
         }
