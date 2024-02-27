@@ -13,33 +13,32 @@
  *     }
  * }
  */
-// https://www.youtube.com/watch?v=Op6YFcs8R9M - very easy solution
 class Solution {
-    
     int maxSum = Integer.MIN_VALUE;
+
     public int maxPathSum(TreeNode root) {
-        if(root == null){
+        if (root == null) {
             return 0;
         }
-        findMax(root);
+        getMaxValue(root);
         return maxSum;
     }
-    
-    private int findMax(TreeNode root){
-        if(root == null){
+
+    private int getMaxValue(TreeNode root) {
+        if (root == null) {
             return 0;
         }
-        int left = findMax(root.left);
-        int right = findMax(root.right);
-        
+        int left = getMaxValue(root.left);
+        int right = getMaxValue(root.right);
+
         int firstCase = left + right + root.val;
-        int secondCase = Math.max(left,right) + root.val;
-        int thirdCase = root.val;
-        
+        int secondCase = root.val;
+        int thirdCase = Math.max(left, right) + root.val;
+
         maxSum = Math.max(maxSum, firstCase);
         maxSum = Math.max(maxSum, secondCase);
         maxSum = Math.max(maxSum, thirdCase);
-
-        return Math.max(secondCase, thirdCase); // you can return only this 
+        
+        return Math.max(secondCase,thirdCase);
     }
 }
