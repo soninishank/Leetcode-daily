@@ -3,6 +3,8 @@ class Solution {
 
     public String simplifyPath(String path) {
         StringBuilder builder = new StringBuilder();
+        // Before : "/home//foo/"
+        // After split : "","home","","foo"
         String[] strList = path.split("/");
         for (String str : strList) {
             if (str.equals("..")) {
