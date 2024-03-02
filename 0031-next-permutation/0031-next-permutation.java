@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/next-permutation/discuss/13994/Readable-code-without-confusing-ij-and-with-explanation
 class Solution {
 
     public void nextPermutation(int[] nums) {
@@ -20,6 +21,7 @@ class Solution {
         return -1;
     }
 
+    // R.H.S
     private int findNextSuccessor(int[] nums, int pivot) {
         for (int i = nums.length - 1; i >= 0; i--) {
             if (nums[i] > nums[pivot]) {
