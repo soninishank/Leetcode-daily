@@ -14,24 +14,28 @@
  * }
  */
 class Solution {
-    int sum = 0;
 
     public int rangeSumBST(TreeNode root, int low, int high) {
         if (root == null) {
             return 0;
         }
-        applyInOrder(root, low, high);
-        return sum;
+        return applyInOrder(root, low, high);
     }
 
-    private void applyInOrder(TreeNode root, int low, int high) {
+    private int applyInOrder(TreeNode root, int low, int high) {
         if (root == null) {
-            return ;
+            return 0;
         }
-        applyInOrder(root.left,low,high);
-        if(root.val >= low && root.val <= high){
+        int sum = 0;
+        if (root.val >= low && root.val <= high) {
             sum += root.val;
         }
-        applyInOrder(root.right,low,high);
+        if (root.val > low) {
+            sum += applyInOrder(root.left, low, high);
+        }
+        if (root.val < high) {
+            sum += applyInOrder(root.right, low, high);
+        }
+        return sum;
     }
 }
