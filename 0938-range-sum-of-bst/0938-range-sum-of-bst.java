@@ -20,18 +20,18 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        calculateSum(root, low, high);
+        applyInOrder(root, low, high);
         return sum;
     }
 
-    private void calculateSum(TreeNode root, int low, int high) {
+    private void applyInOrder(TreeNode root, int low, int high) {
         if (root == null) {
             return ;
         }
-        calculateSum(root.left, low, high);
-        if (root.val >= low && root.val <= high) {
+        applyInOrder(root.left,low,high);
+        if(root.val >= low && root.val <= high){
             sum += root.val;
         }
-        calculateSum(root.right, low, high);
+        applyInOrder(root.right,low,high);
     }
 }
