@@ -1,5 +1,6 @@
 class Solution {
 
+    HashMap<Pair<Integer,Integer>,Integer> memoMap = new HashMap<>();
     public int numTrees(int n) {
         if (n == 0) {
             return 0;
@@ -12,6 +13,9 @@ class Solution {
         if (start > end) {
             return 1;
         }
+        if(memoMap.containsKey(new Pair<>(start,end))){
+            return memoMap.get(new Pair<>(start,end));
+        }
         if (start == end) {
             return 1;
         }
@@ -21,6 +25,7 @@ class Solution {
 
             count += leftCount * rightCount; // for loop is same as multiplication
         }
+        memoMap.put(new Pair(start,end),count);
         return count;
     }
 }
