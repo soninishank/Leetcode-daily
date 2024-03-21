@@ -19,7 +19,7 @@ class Solution {
             int leftCount = solve(start, i - 1);
             int rightCount = solve(i + 1, end);
 
-            count += leftCount * rightCount;
+            count += leftCount * rightCount; // for loop is same as multiplication
         }
         return count;
     }
