@@ -1,5 +1,6 @@
 class Solution {
 
+    // memoMap is the dp memoization , it will reduce the runtime 
     HashMap<Pair<Integer,Integer>,Integer> memoMap = new HashMap<>();
     public int numTrees(int n) {
         if (n == 0) {
